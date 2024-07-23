@@ -17,7 +17,7 @@ let
   deviceSizes = map (device: device.size) cfg.devices;
 
   devices =
-    imap (index: _deviceConfig: "/dev/kvmfr${toString index}") cfg.devices;
+    imap0 (index: _deviceConfig: "/dev/kvmfr${toString index}") cfg.devices;
 
   udevPackage = pkgs.writeTextDir "/lib/udev/rules.d/99-kvmfr.rules"
     (concatStringsSep "\n" (imap0 (index: deviceConfig: ''
